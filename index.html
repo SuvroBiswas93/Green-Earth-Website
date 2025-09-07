@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Green Earth</title>
     <style>
         *{
@@ -49,13 +50,13 @@
     </section>
 
     <main class="">
-        <section class=" bg-[rgba(#F0FDF4)] ">
+        <section class=" bg-[#F0FDF4] ">
             <h1 class="text-center font-bold text-2xl py-11">Choose Your Trees</h1>
-            <div id ="categories-container" class="w-11/12 mx-auto grid grid-cols-12 gap-4 ">
-                <div class="col-span-2 border">
+            <div id ="categories-container" class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-12 gap-4  ">
+                <div class="col-span-1 border md:col-span-2 ">
                     <h1 class="font-bold text-center">Categories</h1>
                     <div>
-                        <ul class="">
+                        <ul class=" p-2">
                             <li>name</li>
                             <li>name</li>
                             <li>name</li>
@@ -63,12 +64,32 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-span-8 border"></div>
-                <div class="col-span-2 border bg-white rounded-lg">
+                <div id="card-container" class=" col-span-1 md:col-span-8  grid md:grid-cols-3 gap-3 ">
+                    <div class="card space-y-3 p-3 bg-white rounded-t">
+                        <img src="./assets/about.png" alt="">
+                            
+                        <div class="px-2">
+                                <h1 class="font-bold">Tree name</h1>
+                                <p>Tree description</p>
+                        </div>
+                        <div class="flex justify-between px-2">
+                                <button id="" class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">Fruit Tree</button>
+                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span id="amount">1200</span></p>
+
+                        </div>
+                        <div>
+                            <button id="add-card-btn" class="btn btn-info bg-green-500 border-none w-full px-2 text-center rounded-3xl text-white">Add to cart</button>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="col-span-1 md:col-span-2 bg-white rounded-lg">
                     <h2 class="font-extrabold text-center p-4">Your cart</h2>
                 </div>
             </div>
         </section>
+
+        
     </main>
 </body>
 </html>
