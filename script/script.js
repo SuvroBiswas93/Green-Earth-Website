@@ -2,8 +2,10 @@ const categoriesContainer = document.getElementById('category-container')
 
 const cardContainer = document.getElementById('card-container')
 
+const categoryBtn = document.getElementById(`category-btn`)
 
-const loadCategory = () =>{
+
+const loadCategoryData = () =>{
     fetch(`https://openapi.programming-hero.com/api/categories`)
     .then(res => res.json())
     .then(data => displayCategoryData(data.categories))
@@ -11,11 +13,12 @@ const loadCategory = () =>{
 }
 
 const displayCategoryData = (categoryName =>{
+    // console.log(categoryName)
     categoryName.forEach(name => {
         categoriesContainer.innerHTML+= `
                     <div>
                         <ul class="py-1">
-                            <button class = " px-1 text-left hover:bg-green-500 active:bg-green-600 w-full rounded cursor-pointer">${name.category_name}</button>
+                            <button class = "category px-1 text-left hover:bg-green-500 active:bg-green-600 w-full rounded cursor-pointer">${name.category_name}</button>
                         </ul>
                     </div>
         `
@@ -31,6 +34,7 @@ const loadDefaultPageData = () =>{
 }
 
 const displayDefaultPageData = (defaultData) =>{
+    cardContainer.innerHTML = "";
     for (const data of defaultData) {
         cardContainer.innerHTML += `
              <div class="card space-y-3 p-3 bg-white rounded-t">
@@ -41,7 +45,7 @@ const displayDefaultPageData = (defaultData) =>{
                                 <p class ="overflow-y-auto">${data.description}</p>
                         </div>
                         <div class="flex justify-between px-2">
-                                <button id="" class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">${data.category}</button>
+                                <button id="category-btn" class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">${data.category}</button>
                                 <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span id="amount">${data.price}</span></p>
 
                         </div>
@@ -54,5 +58,21 @@ const displayDefaultPageData = (defaultData) =>{
     }
 }
 
-loadCategory()
+const loadPageByCategory = (CategoryId) =>{
+   const url = `https://openapi.programming-hero.com/api/category/${CategoryId}`
+   fetch(url)
+   .then(res => res.json())
+   .then(data => {
+        categoryBtn.addEventListener('click',e =>{
+            console.log(e.target)
+        }) 
+   })
+   .catch(err => console.log('Something Went Wrong'))
+}
+
+
+
+
+
+loadCategoryData()
 loadDefaultPageData()
