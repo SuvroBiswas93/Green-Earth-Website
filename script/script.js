@@ -128,21 +128,19 @@ const displayPlantDetail = (plant) =>{
 
         modalContainer.innerHTML = `
         
-             <div class="card space-y-3 p-3 bg-white rounded-t">
-                        <img src="${plant.image}" alt="" class= "rounded-t md:h-50">
+             <div class="card space-y-3 p-2 bg-white rounded-t">
+                        <img src="${plant.image}" alt="" class= "rounded-t md:h-60">
                             
                         <div class="px-2">
                                 <h1 class="font-bold">${plant.name}</h1>
-                                <p class ="overflow-y-auto">${plant.description.substring(0,100)}...</p>
+                                <p class ="overflow-y-auto">${plant.description}</p>
                         </div>
                         <div class="flex justify-between px-2">
                                 <button id="category-btn" class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">${plant.category}</button>
                                 <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span id="amount">${plant.price}</span></p>
 
                         </div>
-                        <form method="dialog">
-                            <button class="btn">Close</button>
-                        </form>
+                        
                        
                     </div>
         
