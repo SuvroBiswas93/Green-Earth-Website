@@ -175,7 +175,7 @@ cardContainer.addEventListener('click',e =>{
 
        const cartItem = document.createElement('div')
        
-       cartItem.classList.add('cart-item', 'flex','justify-between','w-full','my-2','bg-[#F0FDF4]','p-2') 
+       cartItem.classList.add('cart-item', 'flex','justify-between','w-full','my-2','bg-[#F0FDF4]','p-2','rounded-lg') 
 
         cartItem.innerHTML = `
             <div>
