@@ -4,6 +4,8 @@ const cardContainer = document.getElementById('card-container')
 
 
 
+
+
 const loadCategoryData = () =>{
     fetch(`https://openapi.programming-hero.com/api/categories`)
     .then(res => res.json())
@@ -40,19 +42,20 @@ const loadDefaultPageData = () =>{
     fetch(url)
     .then(res => res.json())
     .then(data => displayDefaultPageData(data.plants))
-    .catch(err => console.log("Data fetching error..."))
+    .catch(err => console.log(err))
 }
 
 const displayDefaultPageData = (defaultData) =>{
     cardContainer.innerHTML = "";
     for (const data of defaultData) {
+        // console.log(data)
         cardContainer.innerHTML += `
              <div class="card space-y-3 p-3 bg-white rounded-t">
                         <img src="${data.image}" alt="" class= "rounded-t md:h-50">
                             
                         <div class="px-2">
-                                <h1 class="font-bold">${data.name}</h1>
-                                <p class ="overflow-y-auto">${data.description}</p>
+                                <h1 onclick = "loadPlantDetail(${data.id})" class="font-bold">${data.name}</h1>
+                                <p class ="overflow-y-auto ">${data.description.substring(0,100)}...</p>
                         </div>
                         <div class="flex justify-between px-2">
                                 <button class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">${data.category}</button>
@@ -93,7 +96,7 @@ const displayPageByCategory = (categoryCard) =>{
                             
                         <div class="px-2">
                                 <h1 class="font-bold">${category.name}</h1>
-                                <p class ="overflow-y-auto">${category.description}</p>
+                                <p class ="overflow-y-auto">${category.description.substring(0,100)}...</p>
                         </div>
                         <div class="flex justify-between px-2">
                                 <button id="category-btn" class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">${category.category}</button>
@@ -109,6 +112,48 @@ const displayPageByCategory = (categoryCard) =>{
     })
     
 }
+
+
+const loadPlantDetail = (id) =>{
+    console.log(id)
+    const url = `https://openapi.programming-hero.com/api/plant/${id}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayPlantDetail(data.plants))
+}
+
+const displayPlantDetail = (plant) =>{
+   const modalContainer = document.getElementById('modal-container')
+   
+
+        modalContainer.innerHTML = `
+        
+             <div class="card space-y-3 p-3 bg-white rounded-t">
+                        <img src="${plant.image}" alt="" class= "rounded-t md:h-50">
+                            
+                        <div class="px-2">
+                                <h1 class="font-bold">${plant.name}</h1>
+                                <p class ="overflow-y-auto">${plant.description.substring(0,100)}...</p>
+                        </div>
+                        <div class="flex justify-between px-2">
+                                <button id="category-btn" class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">${plant.category}</button>
+                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span id="amount">${plant.price}</span></p>
+
+                        </div>
+                        <form method="dialog">
+                            <button class="btn">Close</button>
+                        </form>
+                       
+                    </div>
+        
+        `
+        document.getElementById('plant_modal').showModal()
+
+        // document.getElementById('plant_modal').show
+   
+    
+}
+
 
 
 
