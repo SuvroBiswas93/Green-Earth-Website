@@ -2,8 +2,7 @@ const categoriesContainer = document.getElementById('category-container')
 
 const cardContainer = document.getElementById('card-container')
 
-
-
+const rightContainer =  document.getElementById('aside-right-container')
 
 
 const loadCategoryData = () =>{
@@ -50,16 +49,16 @@ const displayDefaultPageData = (defaultData) =>{
     for (const data of defaultData) {
         // console.log(data)
         cardContainer.innerHTML += `
-             <div class="card space-y-3 p-3 bg-white rounded-t">
+             <div id = "${data.id}" class="card space-y-3 p-3 bg-white rounded-t">
                         <img src="${data.image}" alt="" class= "rounded-t md:h-50">
                             
                         <div class="px-2">
-                                <h1 onclick = "loadPlantDetail(${data.id})" class="font-bold">${data.name}</h1>
+                                <h1 onclick = "loadPlantDetail(${data.id})" class="font-bold cursor-pointer">${data.name}</h1>
                                 <p class ="overflow-y-auto ">${data.description.substring(0,100)}...</p>
                         </div>
                         <div class="flex justify-between px-2">
                                 <button class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">${data.category}</button>
-                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span id="amount">${data.price}</span></p>
+                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span class ="text-green-600" id="amount">${data.price}</span></p>
 
                         </div>
                         <div>
@@ -91,16 +90,16 @@ const displayPageByCategory = (categoryCard) =>{
    
     categoryCard.forEach(category =>{
          cardContainer.innerHTML += `
-             <div class="card space-y-3 p-3 bg-white rounded-t">
+             <div id = "${category.id}" class="card space-y-3 p-3 bg-white rounded-t">
                         <img src="${category.image}" alt="" class= "rounded-t md:h-50">
                             
                         <div class="px-2">
-                                <h1 class="font-bold">${category.name}</h1>
+                                <h1 onclick = "loadPlantDetail(${category.id})" class="font-bold cursor-pointer">${category.name}</h1>
                                 <p class ="overflow-y-auto">${category.description.substring(0,100)}...</p>
                         </div>
                         <div class="flex justify-between px-2">
                                 <button id="category-btn" class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">${category.category}</button>
-                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span id="amount">${category.price}</span></p>
+                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span class ="text-green-600" id="amount">${category.price}</span></p>
 
                         </div>
                         <div>
@@ -109,6 +108,8 @@ const displayPageByCategory = (categoryCard) =>{
                     </div>
         
         `
+
+
     })
     
 }
@@ -137,7 +138,7 @@ const displayPlantDetail = (plant) =>{
                         </div>
                         <div class="flex justify-between px-2">
                                 <button id="category-btn" class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">${plant.category}</button>
-                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span id="amount">${plant.price}</span></p>
+                                <p ><i class="fa-solid fa-bangladeshi-taka-sign"></i><span class = "text-green-600" id="amount">${plant.price}</span></p>
 
                         </div>
                         
@@ -147,13 +148,41 @@ const displayPlantDetail = (plant) =>{
         `
         document.getElementById('plant_modal').showModal()
 
-        // document.getElementById('plant_modal').show
    
     
 }
 
 
 
+cardContainer.addEventListener('click',e =>{
+    
+    if(e.target.innerText === 'Add to cart'){
+        console.log('button clicked')
+        const card = e.target.closest('.card')
+        const title = card.querySelector('h1').innerText
+        const price = card.querySelector('#amount').innerText
+        console.log(title)
+        console.log(price)
+
+       const cartItem = document.createElement('div')
+       
+       cartItem.classList.add('flex','justify-between','w-full','my-2','bg-[#F0FDF4]','p-2') 
+
+        cartItem.innerHTML = `
+            <div>
+                <h1 class="font-semibold">${title}</h1>
+                <p class="text-gray-500">${price}</p>
+            </div>
+            <button class="clear-btn cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+        `
+
+        rightContainer.appendChild(cartItem)
+        cartItem.querySelector('.clear-btn').addEventListener('click', () => {
+            cartItem.remove()
+        })
+        
+    }
+})
 
 
 
