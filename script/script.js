@@ -4,6 +4,8 @@ const cardContainer = document.getElementById('card-container')
 
 const rightContainer =  document.getElementById('aside-right-container')
 
+const totalPrice = document.getElementById('total-price')
+
 
 const loadCategoryData = () =>{
     fetch(`https://openapi.programming-hero.com/api/categories`)
@@ -160,13 +162,13 @@ cardContainer.addEventListener('click',e =>{
         console.log('button clicked')
         const card = e.target.closest('.card')
         const title = card.querySelector('h1').innerText
-        const price = card.querySelector('#amount').innerText
+        const price = Number(card.querySelector('#amount').innerText)
         console.log(title)
         console.log(price)
 
        const cartItem = document.createElement('div')
        
-       cartItem.classList.add('flex','justify-between','w-full','my-2','bg-[#F0FDF4]','p-2') 
+       cartItem.classList.add('cart-item', 'flex','justify-between','w-full','my-2','bg-[#F0FDF4]','p-2') 
 
         cartItem.innerHTML = `
             <div>
@@ -175,14 +177,28 @@ cardContainer.addEventListener('click',e =>{
             </div>
             <button class="clear-btn cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
         `
-
+        
         rightContainer.appendChild(cartItem)
+        updateTotalPrice()
         cartItem.querySelector('.clear-btn').addEventListener('click', () => {
             cartItem.remove()
+            updateTotalPrice()
         })
         
     }
 })
+
+
+const updateTotalPrice = () =>{
+    let total = 0;
+    const cartItems = document.querySelectorAll('.cart-item')
+    cartItems.forEach(item => {
+        const price = item.querySelector('p').innerText
+        const priceConverted = Number(price)
+        total+=priceConverted
+    })
+    totalPrice.innerText = total
+}
 
 
 
