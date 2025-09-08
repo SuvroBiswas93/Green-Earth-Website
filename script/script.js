@@ -142,15 +142,14 @@ const displayPlantDetail = (plant) =>{
              <div class="card space-y-3 p-2 bg-white rounded-t">
                         <img src="${plant.image}" alt="" class= "rounded-t md:h-60">
                             
-                        <div class="px-2">
-                                <h1 class="font-bold">${plant.name}</h1>
-                                <p class ="overflow-y-auto">${plant.description}</p>
+                        <div class="px-2 ">
+                                <h1 class="font-extrabold text-2xl">${plant.name}</h1>
+                                 <p class="pt-1"><span class ="font-bold">Category :</span> ${plant.category}</p>
+                                <p class ="py-1"><span class ="font-bold">price :</span><i class="fa-solid fa-bangladeshi-taka-sign"></i><span class = "text-green-700 font-extrabold " >${plant.price}</span></p>
+                                <p class ="overflow-y-auto"><span class ="font-bold">Description :</span> ${plant.description}</p>
+                                
                         </div>
-                        <div class="flex justify-between px-2">
-                                <button id="category-btn" class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">${plant.category}</button>
-                                <p ><i class="fa-solid fa-bangladeshi-taka-sign"></i><span class = "text-green-600" id="amount">${plant.price}</span></p>
-
-                        </div>
+                        
                         
                        
                     </div>
