@@ -6,6 +6,8 @@ const rightContainer =  document.getElementById('aside-right-container')
 
 const totalPrice = document.getElementById('total-price')
 
+const loader = document.getElementById('manage-spinner')
+
 
 const loadCategoryData = () =>{
     fetch(`https://openapi.programming-hero.com/api/categories`)
@@ -39,6 +41,7 @@ const displayCategoryData = (categoryName =>{
 })
 
 const loadDefaultPageData = () =>{
+    manageSpinner(true)
     const url = `https://openapi.programming-hero.com/api/plants`
     fetch(url)
     .then(res => res.json())
@@ -70,9 +73,12 @@ const displayDefaultPageData = (defaultData) =>{
         
         `
     }
+    manageSpinner(false)
+    return;
 }
 
 const loadPageByCategory = (id) =>{
+    manageSpinner(true)
     console.log(id)
    const url = `https://openapi.programming-hero.com/api/category/${id}`
    fetch(url)
@@ -113,6 +119,8 @@ const displayPageByCategory = (categoryCard) =>{
 
 
     })
+    manageSpinner(false)
+    return
     
 }
 
@@ -201,6 +209,16 @@ const updateTotalPrice = () =>{
 }
 
 
+const manageSpinner = (status) =>{
+    if(status === true){
+        loader.classList.remove('hidden')
+        cardContainer.classList.add('hidden')
+    }
+    else{
+        loader.classList.add('hidden')
+        cardContainer.classList.remove('hidden')
+    }
+}
 
 loadCategoryData()
 loadDefaultPageData()

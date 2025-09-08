@@ -50,6 +50,13 @@
     </section>
 
     <main class="">
+
+        <section id="manage-spinner" class="flex justify-center items-center py-8 hidden">
+        
+            <span class="loading loading-bars loading-xl"></span>
+        
+        </section>
+       
         <section class=" bg-[#F0FDF4] ">
             <h1 class="text-center font-bold text-3xl py-11">Choose Your Trees</h1>
             <div  class=" w-11/12 mx-auto grid grid-cols-1 md:grid-cols-12 gap-4  ">
@@ -82,8 +89,9 @@
             </div>
         </section>
 
-                <!-- <button class="btn" onclick="loadPlantDetail.showModal()">open modal</button> -->
-                 <dialog id="plant_modal" class="modal modal-bottom sm:modal-middle">
+        
+       <!-- <button class="btn" onclick="loadPlantDetail.showModal()">open modal</button> -->
+         <dialog id="plant_modal" class="modal modal-bottom sm:modal-middle">
                     <div class="modal-box">
                         <div id="modal-container">
 
@@ -95,7 +103,7 @@
                         </form>
                         </div>
                     </div>
-                </dialog>       
+        </dialog>       
                    
         
 
