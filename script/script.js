@@ -18,7 +18,7 @@ const displayCategoryData = (categoryName =>{
         categoriesContainer.innerHTML+= `
                     <div>
                         <ul class="py-1">
-                            <button class = "category px-1 text-left hover:bg-green-500 active:bg-green-600 w-full rounded cursor-pointer">${name.category_name}</button>
+                            <button onclick ="loadPageByCategory(${name.id})" class = "category px-1 text-left hover:bg-green-500 active:bg-green-600 w-full rounded cursor-pointer">${name.category_name}</button>
                         </ul>
                     </div>
         `
@@ -38,7 +38,7 @@ const displayDefaultPageData = (defaultData) =>{
     for (const data of defaultData) {
         cardContainer.innerHTML += `
              <div class="card space-y-3 p-3 bg-white rounded-t">
-                        <img src="${data.image}" alt="" class= "rounded-t">
+                        <img src="${data.image}" alt="" class= "rounded-t md:h-50">
                             
                         <div class="px-2">
                                 <h1 class="font-bold">${data.name}</h1>
@@ -58,16 +58,46 @@ const displayDefaultPageData = (defaultData) =>{
     }
 }
 
-const loadPageByCategory = (CategoryId) =>{
-   const url = `https://openapi.programming-hero.com/api/category/${CategoryId}`
+const loadPageByCategory = (id) =>{
+    console.log(id)
+   const url = `https://openapi.programming-hero.com/api/category/${id}`
    fetch(url)
    .then(res => res.json())
-   .then(data => {
-        categoryBtn.addEventListener('click',e =>{
-            console.log(e.target)
-        }) 
+   .then(data =>{
+    console.log(data)
+        displayPageByCategory(data.plants)
+        
    })
+   
    .catch(err => console.log('Something Went Wrong'))
+}
+
+const displayPageByCategory = (categoryCard) =>{
+
+    cardContainer.innerHTML = ""
+   
+    categoryCard.forEach(category =>{
+         cardContainer.innerHTML += `
+             <div class="card space-y-3 p-3 bg-white rounded-t">
+                        <img src="${category.image}" alt="" class= "rounded-t md:h-50">
+                            
+                        <div class="px-2">
+                                <h1 class="font-bold">${category.name}</h1>
+                                <p class ="overflow-y-auto">${category.description}</p>
+                        </div>
+                        <div class="flex justify-between px-2">
+                                <button id="category-btn" class="bg-[#DCFCE7] text-sm p-2 rounded-3xl">${category.category}</button>
+                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span id="amount">${category.price}</span></p>
+
+                        </div>
+                        <div>
+                            <button id="add-card-btn" class="btn btn-info bg-green-500 border-none w-full px-2 text-center rounded-3xl text-white">Add to cart</button>
+                        </div>
+                    </div>
+        
+        `
+    })
+    
 }
 
 
