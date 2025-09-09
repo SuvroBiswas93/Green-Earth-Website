@@ -31,6 +31,13 @@ let nums = [1, 2, 3];
 nums.forEach(n => console.log(n * 2)); // Logs 2, 4, 6 (no return)
 ```
 
+-**filter()** → Returns a new array with elements that pass a condition.
+
+```js
+let nums = [1, 2, 3, 4];
+let evens = nums.filter(n => n % 2 === 0); // [2, 4]
+```
+
 ---
 
 ## ❓ What are arrow functions in ES6?
