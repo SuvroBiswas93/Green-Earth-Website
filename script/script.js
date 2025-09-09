@@ -180,7 +180,7 @@ cardContainer.addEventListener('click',e =>{
         cartItem.innerHTML = `
             <div>
                 <h1 class="font-semibold">${title}</h1>
-                <p class="text-gray-500"><span>${price} </span><span><i class="fa-solid fa-xmark"></i> 1</span></p>
+                <p class="text-gray-500"><i class="fa-solid fa-bangladeshi-taka-sign"></i><span>${price} </span><span><i class="fa-solid fa-xmark"></i> 1</span></p>
             </div>
             <button class="clear-btn cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
         `
@@ -200,7 +200,7 @@ const updateTotalPrice = () =>{
     let total = 0;
     const cartItems = document.querySelectorAll('.cart-item')
     cartItems.forEach(item => {
-        const price = item.querySelector('p').children[0].innerText
+        const price = item.querySelector('p').children[1].innerText
         const priceConverted = Number(price)
         total+=priceConverted
     })
