@@ -1,13 +1,19 @@
 
 ## ❓ What is the difference between var, let, and const?
 
+### var:
+
 - **var** -> Can be **reassigned** and **redeclared**. It is **hoisted**.  
 -  `var` is **function-scoped** (not block-scoped).  
 -  If declared outside of any function, it becomes **global-scoped**.
+---
+### Let:
 
 - **let** -> Can be **reassigned** but **cannot be redeclared** in the same scope.  
 -  `let` is **block-scoped** (block ->`{}` ).  
 -   It is also hoisted, but **not initialized** (Temporal Dead Zone).
+---
+### const:
 
 - **const** -> **Cannot be reassigned** and **cannot be redeclared**.  
 -  Like `let`, it is **block-scoped** and hoisted (with Temporal Dead Zone).
@@ -105,6 +111,8 @@ console.log(name, age);
 - Allow **insert variables inside strings** with ->(`${}`) and allow write **multi-line strings**.  
 - Easier and cleaner than `+` concatenation.
 
-- 
+### Example: 
+
+```js
 
 
