@@ -114,5 +114,23 @@ console.log(name, age);
 ### Example: 
 
 ```js
+// (string concatenation)
+let name = "Suvro";
+let greet = "Hello, " + name + "!";
+console.log(greet); // Hello, Suvro!
+
+// ES6 template literal
+let greet2 = `Hello, ${name}!`;
+console.log(greet2); // Hello, Suvro!
+
+// Multi-line string with template literal
+let multiline = `Hello i am Suvro Biswas,
+This is a readme file structure,
+Here i am writing an example of multiline string with template literal,
+ES6 is cool !`;
+
+console.log(multiline);
+
+```
 
 
