@@ -28,7 +28,7 @@ let doubled = nums.map(n => n * 2); // [2, 4, 6]
 
 ```js
 let nums = [1, 2, 3];
-nums.forEach(n => console.log(n * 2));
+nums.forEach(n => console.log(n * 2)); // Logs 2, 4, 6 (no return)
 ```
 
 ---
