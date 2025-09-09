@@ -101,6 +101,10 @@ console.log(name, age);
 
 ## ❓ Explain template literals in ES6. How are they different from string concatenation?
 
+- Template literals use backticks (`` ` ``) instead of quotes ("" / '').  
+- Allow **insert variables inside strings** with ->(`${}`) and allow write **multi-line strings**.  
+- Easier and cleaner than `+` concatenation.
+
 - 
 
 
