@@ -180,7 +180,7 @@ cardContainer.addEventListener('click',e =>{
         cartItem.innerHTML = `
             <div>
                 <h1 class="font-semibold">${title}</h1>
-                <p class="text-gray-500">${price} <i class="fa-solid fa-xmark text-sm"></i> 1</p>
+                <p class="text-gray-500">${price}</p>
             </div>
             <button class="clear-btn cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
         `
