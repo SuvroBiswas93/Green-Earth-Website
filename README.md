@@ -64,7 +64,7 @@ console.log(addArrow(2, 3)); // 5
 ## ❓  How does destructuring assignment work in ES6?
 
 - Destructuring allows to **unpack values** from arrays or objects into variables easily.
-- It is and ES-6 Feature
+- It is an ES-6 Feature
 
 ### Array Destructuring
 
